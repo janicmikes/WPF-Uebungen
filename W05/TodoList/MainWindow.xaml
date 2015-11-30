@@ -1,0 +1,20 @@
+﻿<Window x:Class="TodoList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoList"
+        mc:Ignorable="d"
+        Title="Todo List" Height="350" Width="525">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="MyVisibilityConverter"/>
+    </Window.Resources>
+
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Bottom" Padding="4" Text="Offene Tasks: x / y">
+        </TextBlock>
+        <ListBox>
+            <!-- place your bindings and the data template here -->
+        </ListBox>
+    </DockPanel>
+</Window>
