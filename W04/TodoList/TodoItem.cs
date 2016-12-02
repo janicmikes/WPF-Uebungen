@@ -9,7 +9,6 @@ namespace TodoList
         public string DeadlineAsString => Deadline.ToString("dd.MM.yyyy");
         public bool IsDone { get; set; }
         public bool IsOpen => !IsDone;
-
         public TodoItem() { }
 
         public TodoItem(string description, DateTime deadline, bool isDone = false)
@@ -18,5 +17,6 @@ namespace TodoList
             Deadline = deadline;
             IsDone = isDone;
         }
+       
     }
 }

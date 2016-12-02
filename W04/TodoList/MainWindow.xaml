@@ -7,13 +7,25 @@
         mc:Ignorable="d"
         Title="Todo List" Height="350" Width="525">
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="MyVisibilityConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="myTaskTemplate.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <DockPanel>
-        <TextBlock DockPanel.Dock="Bottom" Padding="4" Text="Offene Tasks: x / y">
+        <TextBlock DockPanel.Dock="Bottom" Padding="4">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}Offene Tasks: {0} / {1}">
+                    <Binding Path="OpenItems"></Binding>
+                    <Binding Path="TodoItems.Count"></Binding>
+                </MultiBinding>
+            </TextBlock.Text>
         </TextBlock>
-        <ListBox>
+        <ListBox ItemsSource="{Binding TodoItems}" 
+                 ItemTemplate="{StaticResource myTaskTemplate}"
+                 HorizontalContentAlignment="Stretch">
             <!-- place your bindings and the data template here -->
         </ListBox>
     </DockPanel>

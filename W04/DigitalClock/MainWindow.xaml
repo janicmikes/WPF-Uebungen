@@ -17,6 +17,6 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Label Style="{StaticResource TimeStyle}" Content="Put your binding here" />
+        <Label Style="{StaticResource TimeStyle}" Content="{Binding TimeString}" />
     </Grid>
 </Window>
