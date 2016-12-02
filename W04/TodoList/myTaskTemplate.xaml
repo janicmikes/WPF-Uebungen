@@ -2,12 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:WPFFeatureSample_Application.Converters"
                     xmlns:local="clr-namespace:TodoList">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary>
-            <converters:local:DeadlineToBrushConverter x:Key="MyDeadlineToBrushConverter"></converters:local>
-        </ResourceDictionary>
-        <ResourceDictionary Source="Resources/ControlDictionary.xaml"></ResourceDictionary>
-    </ResourceDictionary.MergedDictionaries>
     <BooleanToVisibilityConverter x:Key="MyVisibilityConverter"/>
     <local:DeadlineToBrushConverter x:Key="MyDeadlineToBrushConverter" />
     <DataTemplate x:Key="myTaskTemplate" DataType="local:Task">
