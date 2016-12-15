@@ -21,7 +21,7 @@ namespace AsciiArtGenerator
         // Typical width/height for ASCII characters
         private const double FontAspectRatio = 0.6;
 
-        private static string OutputCharSet => OutputCharSet2;
+        private static string OutputCharSet => OutputCharSet1;
 
         // Available character set, ordered by decreasing intensity (brightness)
         private const string OutputCharSet1 = "@%#*+=-:. ";

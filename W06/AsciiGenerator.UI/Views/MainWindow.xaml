@@ -52,26 +52,39 @@
             </Grid.RowDefinitions>
             
             <Label Grid.Row="0" Grid.Column="0">Bild:</Label>
-            <TextBox Grid.Row="0" Grid.Column="1" />
-            <Button Grid.Row="0" Grid.Column="2" Content="..."></Button>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ImagePath}" />
+            <Button Grid.Row="0" Grid.Column="2" Content="..." IsEnabled="{Binding CanCreate}" Command="{Binding ChooseFileCommand}"></Button>
 
             <Label Grid.Row="1" Grid.Column="0">Breite:</Label>
             <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-                <TextBox Width="48" />
+                <TextBox Width="48" Text="{Binding LineWidth}"/>
                 <Label>Zeichen po Zeile</Label>
             </StackPanel>
 
             <Label Grid.Row="2" Grid.Column="0">ASCII Art:</Label>
             <DockPanel Grid.Row="2" Grid.Column="1">
-                <Button HorizontalAlignment="Left">Berechnen</Button>
+                <Button HorizontalAlignment="Left"
+                        IsEnabled="{Binding CanCreate}"
+                        Command="{Binding CalcCommand}">
+                    <Grid Width="120">
+                        <TextBlock Text="Berechnen" TextAlignment="Center"></TextBlock>
+                        <fa:ImageAwesome Icon="Refresh"
+                                         SpinDuration="2"
+                                         HorizontalAlignment="Right"
+                                         Spin="True"
+                                         Width="14" 
+                                         Height="14"
+                                         Visibility="{Binding CanCreate, Converter={StaticResource InvertedBoolConverter}}"></fa:ImageAwesome>
+                    </Grid>
+                </Button>
                 <!-- Spacer element -->
                 <TextBlock Width="20"/>
                 <Label>Schriftgrösse:</Label>
-                <Label Content="12" />
-                <Slider HorizontalAlignment="Stretch" Minimum="2" Maximum="20" TickFrequency="1"></Slider>
+                <Label Content="{Binding FontSize}" />
+                <Slider HorizontalAlignment="Stretch" Minimum="2" Maximum="20" Value="{Binding FontSize}" TickFrequency="1"></Slider>
             </DockPanel>
         </Grid>
         
-        <TextBox Style="{StaticResource AsciiArtStyle}" ></TextBox>
+        <TextBox Text="{Binding Result}" Style="{StaticResource AsciiArtStyle}" FontSize="{Binding FontSize}"></TextBox>
     </DockPanel>
 </Window>

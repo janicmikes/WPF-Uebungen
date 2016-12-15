@@ -17,7 +17,7 @@ namespace AsciiGenerator.UI.ViewModels
     {
         // Kommando, das ein ASCII Art erzeugt
         private ICommand _calcCommand;
-        public ICommand CalcCommand => _calcCommand ?? (_calcCommand = new RelayCommand(() => CreateAsciiArt()));
+        public ICommand CalcCommand => _calcCommand ?? (_calcCommand = new RelayCommand(() => CreateAsciiArtInBgThread()));
 
         // Kommando, das den Datei-Öffnen Dialog anzeigt
         private ICommand _chooseFileCommand;
@@ -130,6 +130,18 @@ namespace AsciiGenerator.UI.ViewModels
         private void ShowError(string msg)
         {
             MessageBox.Show(msg, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        public void CreateAsciiArtInBgThread()
+        {
+            // your turn...
+            Task.Run(() =>
+            {
+                CreateAsciiArt();
+                System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke(() =>
+                {
+                    // hier könnte noch etwas im UI-Thread ausgeführt werden, falls nötig // --> hier jedoch nicht nötig, da DataBinding (INotifyPropertyChanged) // bei WPF immer im Thread-Safe gesetzt wird :-)
+                });
+            });
         }
     }
 }

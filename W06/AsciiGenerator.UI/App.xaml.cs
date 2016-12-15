@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using AsciiGenerator.UI.ViewModels;
+using AsciiGenerator.UI.Views;
 
 namespace AsciiGenerator.UI
 {
@@ -14,12 +15,15 @@ namespace AsciiGenerator.UI
     /// </summary>
     public partial class App : Application
     {
+        public AsciiGeneratorViewModel AppVm { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            // hier den Glue Code ergänzen:
-            // ...
+            AppVm = new AsciiGeneratorViewModel();
+            MainWindow = new MainWindow();
+            MainWindow.DataContext = AppVm;
+            MainWindow.Show();
         }
     }
 }

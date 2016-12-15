@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using AsciiGenerator.UI.ViewModels;
+using System.Windows;
 
 namespace AsciiGenerator.UI.Views
 {
@@ -7,9 +8,11 @@ namespace AsciiGenerator.UI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        AsciiGeneratorViewModel vm = new AsciiGeneratorViewModel();
         public MainWindow()
         {
             InitializeComponent();
         }
+        
     }
 }
