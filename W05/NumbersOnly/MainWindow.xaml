@@ -13,7 +13,7 @@
         <TextBlock Text="Guess what number between 0 and 100 I am thinking of?" />
         <StackPanel Orientation="Horizontal" Margin="0,20,0,20">
             <TextBlock Text="Your guess:" VerticalAlignment="Center" Margin="0 0 10 0"></TextBlock>
-            <TextBox Name="NrInput" Width="64" VerticalContentAlignment="Center" FontFamily="Segoe UI" BorderThickness="0" HorizontalAlignment="Left" Margin="0,0,10,0"/>
+            <TextBox Name="NrInput" Width="64" VerticalContentAlignment="Center" FontFamily="Segoe UI" BorderThickness="0" HorizontalAlignment="Left" Margin="0,0,10,0" PreviewKeyDown="NrInput_PreviewKeyDown"/>
             <Button Name="CheckButton" Content="Check" Background="Transparent" 
                     BorderThickness="2" BorderBrush="White" Foreground="White" Padding="10 4" 
                     Click="CheckButton_Click"

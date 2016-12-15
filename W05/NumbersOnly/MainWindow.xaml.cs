@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace NumbersOnly
 {
@@ -98,6 +101,29 @@ namespace NumbersOnly
             // you made it, restart the game
             MessageBox.Show("Restarting the game, now.");
             ThinkOfANumber();
+        }
+        private List<Key> AllowedKeys = new List<Key>() {
+            Key.D0,
+            Key.D1,
+            Key.D2,
+            Key.D3,
+            Key.D4,
+            Key.D5,
+            Key.D6,
+            Key.D7,
+            Key.D8,
+            Key.D9,
+            Key.Back
+        };
+
+        NrInput.PreviewKeyDown += (o, a) => { 
+            // nur Ziffern und Backspace erlauben if (!AllowedKeys.Contains(a.Key)) { a.Handled = true; return; }
+            // nicht mehr als 3 Ziffern erlauben (Falls nicht Backspace/Delete) if (a.Key != Key.Back && a.Key != Key.Delete && NrInput.Text.Length + 1 /* inkl. neue Ziffer */ > 3) { a.Handled = true; return; } };
+
+        private void NrInput_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            Console.WriteLine(e.DeadCharProcessedKey.ToString());
+            Console.WriteLine(sender.ToString());
         }
     }
 }
